@@ -1,0 +1,92 @@
+.firsts {
+    display: flex;
+    flex-direction: row;
+    margin: auto 10px;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgb(238, 236, 236);
+}
+
+.logos {
+    width: 30%;
+    height: 60px;
+    margin-top: -10px;
+    margin-left: 20px;
+}
+
+.Sign_in {
+    display: inline;
+    flex-direction: row;
+    justify-content: center;
+    color: #002f34;
+    margin-top: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 55px;
+    
+}
+
+.Cr456 {
+    display: inline;
+    flex-direction: row;
+    justify-content: center;
+    width: 20%;
+    padding: 10px 15px;
+    margin-top: 20px;
+    
+}
+
+.Sign_in {
+    width: 100%;
+    background-color: #002f34;
+    border-radius: 5px;
+    
+    
+}
+
+.HeadOne{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: aqua !important;
+    font-size: 50px;
+}
+
+.hello{
+    text-align: center;
+    color:aqua;
+}
+
+.withBtn{
+    
+    margin-top: 20px;
+    padding: 10px 15px;
+}
+
+.ConBtn{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 250px;
+    margin-top: 20px;
+    padding: 10px 15px;
+    height: 50px;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #002f34;
+    border-radius: 5px;
+    border: #002f34 4px solid;
+     
+}
+
+:hover.ConBtn{
+    background-color: #002f34;
+    color: aqua;
+    transition: 1s;
+}
