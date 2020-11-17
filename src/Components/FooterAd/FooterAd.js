@@ -3,7 +3,7 @@ import './footerAd.css'
 import phone from '../../image/phone.webp'
 
 
-export default class FooterAd extends React.Component {
+class FooterAd extends React.Component {
     render() {
         return (
 
@@ -24,3 +24,6 @@ export default class FooterAd extends React.Component {
         )
     }
 }
+
+
+export default FooterAd;

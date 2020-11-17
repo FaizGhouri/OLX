@@ -1,15 +1,26 @@
 import React from 'react';
-import Header from '../Header/Header'
 import Home from '../Navbar/Navbar'
 import '../page/page.css'
 import CallIcon from '@material-ui/icons/Call';
-import Top from '../lower/footer';
-import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { connect } from 'react-redux'
-import { compose } from 'redux';
+import Top from '../lower/footer'
+import logo from '../../image/logo.png';
+import '../loginpage/loginPage.css'
+import SearchIcon from '@material-ui/icons/Search';
+import AddIcon from '@material-ui/icons/Add';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import IconButton from 'react-bootstrap/Button';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
+import ChatBubbleOutlineTwoToneIcon from '@material-ui/icons/ChatBubbleOutlineTwoTone';
+import Dropdown from 'react-bootstrap/Dropdown'
 import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import moment from 'moment';
+import Slider from 'react-slick'
+
 
 
 
@@ -28,9 +39,10 @@ const settings = {
 
 const PageRout = (props) => {
 
-    const { Post_Ads } = props;
+    const { Post_Ads, current_user } = props;
+   
     
-    
+
 
     if (Post_Ads) {
 
@@ -40,7 +52,98 @@ const PageRout = (props) => {
 
             <div className="page">
                 <div>
-                    <Header />
+                    <div className="first fixed-top" >
+
+                        <div className="head">
+
+
+                            <div>
+                                <Link to='/loginpage'>
+                                    <img src={logo} className="logo" alt="logo" />
+                                </Link>
+
+                            </div>
+
+
+                            <div className="seacrhBar">
+                                <i className="fa fa-search fa-lg" aria-hidden="true"></i>
+                                <input type="text" className="input" placeholder="Search" value="Pakistan" />
+                                <ExpandMoreIcon className="ex" style={{ fontSize: 50 }} />
+
+                            </div>
+
+
+                            <div className="longSearch">
+
+                                <input type="text" placeholder="Find Cars, Mobile Phone and more..." className="long" />
+
+
+                                <IconButton className="btn">
+                                    <SearchIcon className="searchBTn" style={{ fontSize: 35 }} />
+                                </IconButton>
+
+
+                            </div>
+
+
+
+                            <div className="SearchBtn">
+
+                                <NotificationsNoneOutlinedIcon className="notification" style={{ fontSize: 25 }} />
+
+                                <ChatBubbleOutlineTwoToneIcon className="notification" style={{ fontSize: 25 }} />
+
+                                <img src={current_user.photo} className="picture" alt="profile picture" />
+
+
+
+                                <Dropdown>
+                                    <Dropdown.Toggle className="DropOne" >
+
+                                        <ExpandMoreIcon style={{ fontSize: 20, color: "black" }} />
+
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown >
+                                            <div className="Menu">
+                                                <div>
+                                                    <img src={current_user.photo} className="proflie" alt="profile picture" />
+                                                </div>
+                                                <div className="Name">
+                                                    <p>Hello</p>
+                                                    <h6>{current_user.name}</h6>
+                                                </div>
+                                            </div>
+                                        </Dropdown>
+                                        <Dropdown.Divider />
+
+                                        <Dropdown >
+
+
+                                            <button >
+                                                LogOut
+                                            </button>
+
+                                        </Dropdown>
+
+
+                                    </Dropdown.Menu>
+                                </Dropdown>
+
+                                <Link to="/postCard" >
+
+                                    <button className="sell" ><AddIcon style={{ fontSize: 20 }} />  SELL</button>
+
+                                </Link>
+
+
+                            </div>
+
+
+                        </div >
+
+                    </div>
                 </div>
                 <div>
 
@@ -75,7 +178,7 @@ const PageRout = (props) => {
 
 
                                         <div className="">
-                                            <img className="ImgAddress" src={Post_Ads.photo} alt="Picture" />
+                                            <img className="ImgAddress" src={Post_Ads.photo} alt={props} />
                                         </div>
 
                                     </Slider>
@@ -92,14 +195,14 @@ const PageRout = (props) => {
 
                                 <h1>Rs {Post_Ads.Price}</h1>
 
-                                <p className="kms">2011 - 75,000 km</p>
+
 
                                 <p className="camry">{Post_Ads.Item}</p>
 
                                 <div className="locda">
 
-                                    <p className="location">Cantt,Lahore,Punjab</p>
-                                    <p className="date">Oct 22</p>
+                                    <p className="location">{Post_Ads.location}</p>
+                                    <p className="date">{moment(Post_Ads.createAt.toDate().toString()).format("MMM Do YY")}</p>
 
                                 </div>
 
@@ -112,7 +215,7 @@ const PageRout = (props) => {
                                     <img src={"https://statics.olx.com.pk/external/base/img/loginEntryPointChat.webp"} width="80px" alt="pix" />
 
                                     <p className="carNax">
-                                        {/* {this.props.Post_Ad.username} */}
+                                        {Post_Ads.username}
                                         <p className="member">Member Since 2015</p>
                                     </p>
 
@@ -176,7 +279,7 @@ const PageRout = (props) => {
                                 <h5>Description</h5>
 
                                 {Post_Ads.description}
-                                
+
                             </div>
 
                         </div>
@@ -216,11 +319,14 @@ const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
     const Post_Ad = state.firestore.data.Post_Ad;
     const Post_Ads = Post_Ad ? Post_Ad[id] : null;
+    const current_user = state.User.current_user;
+   
 
     return {
 
-        Post_Ads: Post_Ads
-
+        Post_Ads: Post_Ads,
+        current_user: current_user,
+      
     }
 }
 

@@ -1,27 +1,30 @@
+
 .AllCard{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    flex-direction: row !important;
     justify-content: center;
     width: 100%;
+    margin-top: 50px;
 }
 
 
 
 .DivSquare {
-    width: 100%;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
     background-color: white;
-    margin-top: 6%;
-    margin-left: 6%;
-    border: rgb(182, 181, 181) 1px solid;
+    margin: auto 50px !important;
     border-radius: 2px;
     align-items: center;
 }
 
 
-.card{
+.card{  
     background-color: white;
-    border: 1px solid rgb(226, 226, 226) !important;
+    border: 1px solid rgb(204, 204, 204) !important;
     border-radius: 5px;
+
 }
 
 
@@ -41,6 +44,20 @@
     padding-left: 10px;
     padding-top: 10px;
     border-left: 6px solid rgb(233, 233, 12);
+}
+
+p,h5{
+    
+    color: #002f34;
+    
+    
+}
+
+.loctda{
+    color: #002f34;  
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .fea{

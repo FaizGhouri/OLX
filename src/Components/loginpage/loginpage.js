@@ -17,10 +17,11 @@ import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneO
 import ChatBubbleOutlineTwoToneIcon from '@material-ui/icons/ChatBubbleOutlineTwoTone';
 import CardList from '../cardList/List';
 import Dropdown from 'react-bootstrap/Dropdown'
-import Sign_Out from '../../Redux store/SignOut_action/action';
+import { Sign_Out } from '../../Redux store/SignOut_action/action';
 import firebase from '../../Database config/firebase';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+
 
 
 
@@ -39,13 +40,16 @@ class LoginPage extends React.Component {
                 <div>
 
 
+
                     <div className="first fixed-top" >
 
                         <div className="head">
 
 
                             <div>
-                                <img src={logo} className="logo" alt="logo" />
+                               <Link to='/loginpage'>
+                                    <img src={logo} className="logo" alt="logo" />
+                               </Link>
 
                             </div>
 
@@ -53,7 +57,7 @@ class LoginPage extends React.Component {
                             <div className="seacrhBar">
                                 <i className="fa fa-search fa-lg" aria-hidden="true"></i>
                                 <input type="text" className="input" placeholder="Search" value="Pakistan" />
-                                <ExpandMoreIcon style={{ fontSize: 50 }} />
+                                <ExpandMoreIcon className="ex" style={{ fontSize: 50 }} />
 
                             </div>
 
@@ -81,12 +85,46 @@ class LoginPage extends React.Component {
                                 <img src={user.photo} className="picture" alt="profile picture" />
 
 
+
+                                <Dropdown>
+                                    <Dropdown.Toggle className="DropOne" >
+
+                                        <ExpandMoreIcon style={{ fontSize: 20, color: "black" }} />
+
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown >
+                                            <div className="Menu">
+                                                <div>
+                                                    <img src={user.photo} className="proflie" alt="profile picture" />
+                                                </div>
+                                                <div className="Name">
+                                                    <p>Hello</p>
+                                                    <h6>{user.name}</h6>
+                                                </div>
+                                            </div>
+                                        </Dropdown>
+                                        <Dropdown.Divider />
+
+                                        <Dropdown >
+
+
+                                            <button onClick={this.props.Sign_Out()}>
+                                                LogOut
+                                            </button>
+
+                                        </Dropdown>
+
+
+                                    </Dropdown.Menu>
+                                </Dropdown>
+
                                 <Link to="/postCard" >
 
                                     <button className="sell" ><AddIcon style={{ fontSize: 20 }} />  SELL</button>
 
                                 </Link>
-
 
 
                             </div>
@@ -146,20 +184,27 @@ const mapStateToProps = (state) => {
 
     console.log(state)
 
-    return{
+    return {
 
-        
+
         current_user: state.User.current_user,
         Post_Ad: state.firestore.ordered.Post_Ad
-        
+
     }
 
 }
 
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+        Sign_Out: () => dispatch(Sign_Out())
+    }
+
+}
 
 export default compose(
 
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
         { collection: 'Post_Ad' }
     ])

@@ -11,37 +11,47 @@ const Card = ({ Post_Ads }) => {
 
     return (
 
-        <div className="AllCard">
-
-            <div className="DivSquare">
+        <div className="big">
 
 
+            <div className="AllCard">
+             
 
-                <div className="pic">
+                <div className="DivSquare">
 
-                    <p className="fea">FEATURED</p>
-
-                    <img src={Post_Ads.photo} alt="pix" className="pix" />
-
-                </div>
-                <div className="price">
+                    <div className="card">
 
 
-                    <h5>{Post_Ads.Price}</h5>
+                        <div className="pic">
+
+                            <p className="fea">FEATURED</p>
+
+                            <img src={Post_Ads.photo} alt="pix" className="pix" />
+
+                        </div>
+                        <div className="price">
 
 
-                    {Post_Ads.Item}
+                            <h5>Rs {Post_Ads.Price}</h5>
 
 
-                </div>
+                            <p>{Post_Ads.Item}</p>
 
-                <div>
-                    <h6>{moment(Post_Ads.createAt.toDate().toString()).format("MMM Do YY")}</h6>
+
+                        </div>
+
+                        <div className="loctda">
+
+                            <p>{Post_Ads.location}</p>
+
+                            <p className="date">{moment(Post_Ads.createAt.toDate().toString()).format("MMM Do YY")}</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
         </div>
-
 
     )
 }

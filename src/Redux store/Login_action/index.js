@@ -1,6 +1,6 @@
 import firebase from '../../Database config/firebase';
 
-const Google_Login = (history) => {
+const Google_Login = () => {
 
     return (dispatch) => {
 
@@ -22,7 +22,7 @@ const Google_Login = (history) => {
                     .then(() => {
                         dispatch({ type: "SETUSER", payload: create_user })
                         alert("login Sucessfully");
-
+                        
                     })
 
 
@@ -40,7 +40,7 @@ const Google_Login = (history) => {
 
 
 
-const Facebook_Login = (history) => {
+const Facebook_Login = () => {
     return (dispatch) => {
 
         var provider = new firebase.auth.FacebookAuthProvider();
@@ -61,6 +61,8 @@ const Facebook_Login = (history) => {
                 .then(() => {
                     dispatch({ type: "SETUSER", payload: create_user })
                     alert("login Sucessfully")
+                   
+                   
                 })
 
         }).catch(function (error) {

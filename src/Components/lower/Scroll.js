@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react'
 import ExpandLess from '@material-ui/icons/ExpandLess';
-import AOS from 'aos'
 import '../lower/footer.css'
 
 

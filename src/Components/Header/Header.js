@@ -11,8 +11,9 @@ import Button from 'react-bootstrap/Button';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Google_Login, Facebook_Login } from '../../Redux store/Login_action/action'
+import { Google_Login, Facebook_Login } from '../../Redux store/Login_action/index'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 const photos = [
   {
@@ -74,7 +75,7 @@ class Header extends React.Component {
 
 
     let user = this.props.current_user;
-    
+
 
     return (
 
@@ -85,7 +86,9 @@ class Header extends React.Component {
 
 
           <div>
-            <img src={logo} className="logo" alt="logo" />
+            <Link to='/'>
+              <img src={logo} className="logo" alt="logo" />
+            </Link>
 
           </div>
 
@@ -114,6 +117,8 @@ class Header extends React.Component {
 
           <div className="SearchBtn">
             <div>
+
+            
 
               <Button className="log" onClick={() => { this.handleModal() }}>Login</Button>
 
@@ -145,15 +150,15 @@ class Header extends React.Component {
 
                     <div>
                       <button className="Continue">Continue with phone</button>
-                      
+
                       <Link to='/loginpage'>
 
 
-                        <button className="Continue" onClick={() => { this.props.Facebook_Login(this.props.history) }}><i class="fa fa-facebook fa2" aria-hidden="true"></i> Continue with facebook</button>
-                        <button className="Continue" onClick={() => { this.props.Google_Login(this.props.history) }}><i class="fa fa-google" aria-hidden="true"></i> Continue with google</button>
+                        <button className="Continue" onClick={() => { this.props.Facebook_Login() }}><i class="fa fa-facebook fa2" aria-hidden="true"></i> Continue with facebook</button>
+                        <button className="Continue" onClick={() => { this.props.Google_Login() }}><i class="fa fa-google" aria-hidden="true"></i> Continue with google</button>
 
                       </Link>
-                     
+
                       <button className="Continue">Continue with email</button>
 
                     </div>
@@ -176,7 +181,7 @@ class Header extends React.Component {
 
             </div>
 
-              <button className="sell" onClick={() => {alert("Login First")}}><AddIcon style={{ fontSize: 20 }} />  SELL</button>
+            <button className="sell" onClick={() => { alert("Login First") }}><AddIcon style={{ fontSize: 20 }} />  SELL</button>
 
 
 
@@ -197,17 +202,22 @@ class Header extends React.Component {
 
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
 
-  current_user: state.User.current_user,
+  // current_user: state.User.current_user,
+  console.log(state);
+  return {
 
-})
+  }
+
+}
 
 const mapDispatchToProp = (dispatch) => ({
 
-  Google_Login: (history) => dispatch(Google_Login(history)),
+  Google_Login: () => dispatch(Google_Login()),
 
-  Facebook_Login: (history) => dispatch(Facebook_Login(history)),
+  Facebook_Login: () => dispatch(Facebook_Login()),
+
 
 })
 

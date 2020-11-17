@@ -62,7 +62,7 @@ const facebook_login = (history) => {
                 .then(() => {
                     dispatch({ type: "SETUSER", payload: create_user })
                     alert("login Sucessfully")
-                    history.push('/postCard')
+                    history.push('/loginpage')
 
                 })
 

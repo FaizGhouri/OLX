@@ -7,17 +7,28 @@ const CardList = ({ Post_Ad }) => {
 
 
     return (
-        <div className='Cardlist'>
-            {Post_Ad && Post_Ad.map(Post_Ads => {
-                return (
 
-                    <Link to={'/cardPg/' + Post_Ads.id}>
+        <div className="Main-Card">
 
-                        <Card Post_Ads={Post_Ads} key={Post_Ads.id} />
+            <h3>Fresh recommandations</h3>
+            <div className='Cardlist'>
+                {Post_Ad && Post_Ad.map(Post_Ads => {
+                    return (
 
-                    </Link>
-                )
-            })}
+                        <Link to={'/cardPg/' + Post_Ads.id} key={Post_Ads.id}>
+
+                            
+
+                            <Card Post_Ads={Post_Ads} />
+
+
+                            
+
+
+                        </Link>
+                    )
+                })}
+            </div>
         </div>
     )
 }

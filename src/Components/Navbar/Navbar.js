@@ -23,7 +23,7 @@ class Home extends React.Component {
                         ALL CATEGORIES
 
                     </p>
-                    <ExpandMoreIcon style={{ fontSizeAdjust: 30 }, { fontSize: 35 }}  />
+                    <ExpandMoreIcon style={{ fontSize: 35 }}  />
 
                    
 

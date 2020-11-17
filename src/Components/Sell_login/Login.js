@@ -2,10 +2,9 @@ import React from 'react';
 import '../Sell_login/sell.css';
 import logo from '../../image/logo.png';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as  Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { Google_Signin, facebook_login } from '../../Redux store/Sell_action/index';
-import PostTOAdd from '../post/postCard'
 
 
 

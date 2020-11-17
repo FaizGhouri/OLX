@@ -1,25 +1,19 @@
-// import firebase from '../../Database config/firebase';
+import firebase from '../../Database config/firebase';
 
 
-// const Sign_Out = () => {
+export const Sign_Out = () => {
 
-//     return (dispatch) => {
+    return (dispatch, getState, { getFirebase }) => {
+        const firebase = getFirebase();
 
+        firebase.auth().signOut().then(()=>{
 
-//         firebase.auth().signOut().then(function () {
+            dispatch({ type: 'SIGNOUT_SUCCESS'})
 
-//         }).then(() => {
+        });
 
-//             dispatch({ type: "SIGN_OUT" })
-
-//         }).catch(function (error) {
-
-
-//         });
-
-//     }
+    }
 
 
-// }
+}
 
-// export default Sign_Out;

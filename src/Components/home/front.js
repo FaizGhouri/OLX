@@ -2,11 +2,9 @@ import React from 'react';
 import Header from '../Header/Header'
 import Home from '../Navbar/Navbar'
 import Image from '../Logo/image'
-import Card from '../Card/card'
 import Top from '../lower/footer'
 import ScrollToTop from '../lower/Scroll'
 import FooterAd from '../FooterAd/FooterAd';
-import LoadBtn from '../load/button';
 import { connect } from 'react-redux';
 import CardList from '../cardList/List';
 import { firestoreConnect } from 'react-redux-firebase';
@@ -49,11 +47,7 @@ class FrontPage extends React.Component {
 
                 </div>
 
-                <div>
-
-                    <LoadBtn />
-
-                </div>
+            
 
 
                 <div>

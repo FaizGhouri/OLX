@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, } from "react-router-dom";
+import { BrowserRouter as Router,Route, } from "react-router-dom";
 import FrontPage from '../Components/home/front';
 import Sign_Up from '../Components/Sell_login/Login';
 import PostToAdd from '../Components/post/postCard.jsx';

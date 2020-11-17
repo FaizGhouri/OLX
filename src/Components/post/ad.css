@@ -102,12 +102,17 @@ label{
 }
 
 .Con23 {
-    margin-left: 28px;
+    margin-left: 30px !important;
+    width: 50% !important;
+}
+
+.material{
+    margin-left: 20px;
 }
 
 .year {
     margin-left: 65px !important;
-    width: 30%;
+    width: 50%;
 }
 
 .Crip {
@@ -138,9 +143,5 @@ label{
 
 .container{
     text-align: center;
-}
-
-textarea{
-    margin-top: 20px !important;
-    text-align: baseline;
+    
 }
